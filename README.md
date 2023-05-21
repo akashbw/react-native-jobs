@@ -11,7 +11,7 @@
 - Start expo server: `npm run start`
 - Download Expo Go app: https://apps.apple.com/us/app/expo-go/id982107779
 - Open the Camera and scan the QR
-  ![qr_code_terminal](/Users/akashjain/Desktop/qr_code_terminal.png)
+  ![qr_code_terminal](screenshots/qr_code_terminal.png)
 - Open the app on the Phone
 
 ## License
