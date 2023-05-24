@@ -11,8 +11,9 @@ import {
 
 import useFetch from '../../hook/useFetch';
 import { COLORS, icons, SIZES } from '../../constants';
-import { ScreenHeaderBtn } from '../../components';
+import { JobTabs, ScreenHeaderBtn } from '../../components';
 import { useCallback, useState } from 'react';
+import { Company } from '../../components';
 
 const JobDetails = () => {
   const params = useSearchParams();
@@ -66,10 +67,12 @@ const JobDetails = () => {
             <Text>No Data Available</Text>
           ) : (
             <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
-              <Text>companyLogo {data[0].employer_logo}</Text>
-              <Text>jobTitle {data[0].job_title}</Text>
-              <Text>companyName {data[0].employer_name}</Text>
-              <Text>location {data[0].job_country}</Text>
+              <Company
+                companyLogo={data[0].employer_logo}
+                jobTitle={data[0].job_title}
+                companyName={data[0].employer_name}
+                location={data[0].job_country}
+              />
             </View>
           )}
         </ScrollView>
