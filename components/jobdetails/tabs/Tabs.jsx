@@ -5,7 +5,7 @@ import styles from './tabs.style';
 
 const Tabs = ({ tabs, activeTab, setActiveTab }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>Tabs</Text>
     </View>
   );
