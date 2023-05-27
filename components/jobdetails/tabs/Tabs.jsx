@@ -1,12 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 
 import styles from './tabs.style';
 
 const Tabs = ({ tabs, activeTab, setActiveTab }) => {
   return (
     <View style={styles.container}>
-      <Text>Tabs</Text>
+      <FlatList
+        data={tabs}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item }) => <Text>{item}</Text>}
+      />
     </View>
   );
 };
