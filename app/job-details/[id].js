@@ -21,7 +21,11 @@ import {
 import { useCallback, useState } from 'react';
 import { Company } from '../../components';
 
-const tabs = ['About', 'Qualifications', 'Responsibilities'];
+const ABOUT = 'About';
+const QUALIFICATIONS = 'Qualifications';
+const RESPONSIBILITIES = 'Responsibilities';
+
+const tabs = [ABOUT, QUALIFICATIONS, RESPONSIBILITIES];
 
 const JobDetails = () => {
   const params = useSearchParams();
@@ -44,12 +48,12 @@ const JobDetails = () => {
   const displayTabContent = () => {
     switch (activeTab) {
       // About tab
-      case tabs[0]:
+      case ABOUT:
         return (
           <JobAbout info={data[0].job_description ?? 'No Data Provided'} />
         );
       // Qualifications tab
-      case tabs[1]:
+      case QUALIFICATIONS:
         return (
           <Specifics
             title={tabs[1]}
@@ -57,7 +61,7 @@ const JobDetails = () => {
           />
         );
       // Responsibilities tab
-      case tabs[2]:
+      case RESPONSIBILITIES:
         return (
           <Specifics
             title={tabs[2]}
