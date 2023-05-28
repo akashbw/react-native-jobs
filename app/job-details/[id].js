@@ -11,7 +11,13 @@ import {
 
 import useFetch from '../../hook/useFetch';
 import { COLORS, icons, SIZES } from '../../constants';
-import { JobTabs, ScreenHeaderBtn } from '../../components';
+import {
+  JobAbout,
+  JobFooter,
+  JobTabs,
+  ScreenHeaderBtn,
+  Specifics,
+} from '../../components';
 import { useCallback, useState } from 'react';
 import { Company } from '../../components';
 
@@ -34,6 +40,34 @@ const JobDetails = () => {
     refetch();
     setRefreshing(false);
   }, []);
+
+  const displayTabContent = () => {
+    switch (activeTab) {
+      // About tab
+      case tabs[0]:
+        return (
+          <JobAbout info={data[0].job_description ?? 'No Data Provided'} />
+        );
+      // Qualifications tab
+      case tabs[1]:
+        return (
+          <Specifics
+            title={tabs[1]}
+            points={data[0].job_highlights?.Qualifications ?? ['N/A']}
+          />
+        );
+      // Responsibilities tab
+      case tabs[2]:
+        return (
+          <Specifics
+            title={tabs[2]}
+            points={data[0].job_highlights?.Responsibilities ?? ['N/A']}
+          />
+        );
+      default:
+        break;
+    }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -81,10 +115,17 @@ const JobDetails = () => {
                 tabs={tabs}
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
-              />{' '}
+              />
+              {displayTabContent()}
             </View>
           )}
         </ScrollView>
+        <JobFooter
+          url={
+            data[0]?.job_google_link ??
+            'https://careers.google.com/jobs/results/'
+          }
+        />
       </>
     </SafeAreaView>
   );
