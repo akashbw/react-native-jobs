@@ -10,6 +10,7 @@ import {
 
 import styles from './welcome.style';
 import { icons, SIZES } from '../../../constants';
+import { useRouter } from 'expo-router';
 
 const fullTimeJob = 'Full-time';
 const partTimeJob = 'Part-time';
@@ -18,6 +19,7 @@ const contractorJob = 'Contractor';
 const jobTypes = [fullTimeJob, partTimeJob, contractorJob];
 
 const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
+  const router = useRouter();
   const [activeJobType, setActiveJobType] = useState(fullTimeJob);
 
   return (
@@ -56,7 +58,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
               style={styles.tab(activeJobType, item)}
               onPress={() => {
                 setActiveJobType(item);
-                // router.push(`/search/${item}`);
+                router.push(`/search/${item}`);
               }}
             >
               <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
